@@ -3,6 +3,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
+    {{runChangeDetection}}
     <button (click)="onChangeTitle()">Change title</button>
     <button (click)="onEmptyChange()">Click</button>
     <app-contacts-list [title]="title">
@@ -11,6 +12,10 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
+  get runChangeDetection() {
+    console.log('\x1B[31mAppComponent');
+    return true;
+  }
   public title = 'Managers'
 
   onChangeTitle() {
