@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,6 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
     <app-contacts-list [title]="title">
       <app-contacts-item [name]="'Peter'"></app-contacts-item>
     </app-contacts-list>`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   get runChangeDetection() {

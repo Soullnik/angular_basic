@@ -1,11 +1,6 @@
 import {
-  AfterContentChecked,
-  AfterContentInit, AfterViewChecked,
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  Component, DoCheck,
+  Component,
   Input,
-  OnInit
 } from '@angular/core';
 
 @Component({
@@ -14,12 +9,8 @@ import {
     {{runChangeDetection}}
     <button (click)="addItems()">Add</button>
     <span *ngFor="let item of items">{{item}}</span>`,
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ContactsItemComponent implements OnInit,AfterContentInit,
-  AfterContentChecked,
-  AfterViewInit,
-  AfterViewChecked, DoCheck {
+export class ContactsItemComponent  {
   @Input() name: string | null = null
 
   public items: string[] = [];
@@ -34,29 +25,6 @@ export class ContactsItemComponent implements OnInit,AfterContentInit,
 
   addItems() {
     this.items.push(this.items.length.toString())
-  }
-
-  ngOnInit(): void {
-  }
-
-  ngDoCheck() {
-    console.log('Изменение в Айтем', this.name)
-  }
-
-  ngAfterContentInit() {
-    console.log('Иницилизирую контент Айтема', this.name)
-  }
-
-  ngAfterContentChecked() {
-    console.log('Чекаю контент Айтема', this.name)
-  }
-
-  ngAfterViewInit() {
-    console.log('Инициализирую Вьюшку Айтема', this.name)
-  }
-
-  ngAfterViewChecked() {
-    console.log('Чекаю Вьюшку Айтема', this.name)
   }
 
 }

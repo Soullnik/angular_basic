@@ -3,12 +3,11 @@ import {
   AfterContentInit,
   AfterViewChecked,
   AfterViewInit,
-  ChangeDetectionStrategy,
   Component,
   ContentChild,
   DoCheck,
   Input,
-  OnChanges,
+  OnChanges, OnDestroy,
   OnInit,
   SimpleChanges,
   ViewChild
@@ -27,7 +26,6 @@ import {ContactsItemComponent} from "../contacts-item/contacts-item.component";
     </div>
 
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContactsListComponent implements OnChanges,
   OnInit,
@@ -35,9 +33,9 @@ export class ContactsListComponent implements OnChanges,
   AfterContentInit,
   AfterContentChecked,
   AfterViewInit,
-  AfterViewChecked {
-
+  AfterViewChecked, OnDestroy {
   constructor() {
+    console.log('IamCONSTRUCTOR')
   }
 
   @Input() title: string | undefined
@@ -69,8 +67,8 @@ export class ContactsListComponent implements OnChanges,
   }
 
   ngAfterContentInit() {
-    // console.log('AfterContentInit, вызываеться после подгрузки контента между тегами компонента получеными в <ng-content>', this.cntCh)
-    console.log('Иницилизация контента Списка')
+    console.log('AfterContentInit, вызываеться после подгрузки контента между тегами компонента получеными в <ng-content>', this.cntCh)
+    // console.log('Иницилизация контента Списка')
   }
 
   ngAfterContentChecked() {
@@ -78,12 +76,16 @@ export class ContactsListComponent implements OnChanges,
   }
 
   ngAfterViewInit() {
-    // console.log('Иницилизация вью Списка', this.vwCh)
-    console.log('Иницилизация вью Списка')
+    console.log('Иницилизация вью Списка', this.vwCh)
+    // console.log('Иницилизация вью Списка')
   }
 
   ngAfterViewChecked() {
     console.log('Проверка вью Списка')
+  }
+
+  ngOnDestroy() {
+    console.log('уничтожаем компонент')
   }
 
 }
